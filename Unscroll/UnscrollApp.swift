@@ -10,10 +10,11 @@ import SwiftUI
 @main
 struct UnscrollApp: App {
     var body: some Scene {
-        WindowGroup {
+        Window("Unscroll", id: "unscroll") {
             ContentView()
-            
-            PreferencesView()
+                .frame(width: 350, height: 460)
         }
+        .windowResizability(.contentSize)
+        .windowStyle(.hiddenTitleBar)
     }
 }

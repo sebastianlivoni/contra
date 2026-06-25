@@ -6,58 +6,143 @@
 //
 
 import SystemExtensions
+import Observation
 
-class SystemExtensionManager: NSObject, OSSystemExtensionRequestDelegate {
+enum ExtensionUIState {
+    case checking           // Checking status on launch
+    case needsActivation    // Show the "Activate Extension" setup button
+    case waitingForUser     // Prompt user: "Go to System Settings > Privacy & Security to click Allow"
+    case enabled            // Fully active! Show success / main UI
+}
+
+@Observable
+final class SystemExtensionManager: NSObject, OSSystemExtensionRequestDelegate, OSSystemExtensionsWorkspaceObserver {
     let driverID = "me.livoni.Unscroll.UnscrollDriver"
     
+    var uiState: ExtensionUIState = .checking
+    
+    // Internal tracking flag to separate properties evaluation from activation loops
+    private var didFindActiveExtension = false
+    
+    override init() {
+        super.init()
+        
+        setupWorkspaceObserver()
+        queryExtensionProperties()
+        activate()
+    }
+    
+    private func setupWorkspaceObserver() {
+        do {
+            try OSSystemExtensionsWorkspace.shared.addObserver(self)
+            print("Successfully registered workspace observer.")
+        } catch {
+            print("Failed to add workspace observer: \(error)")
+        }
+    }
+    
+    deinit {
+        OSSystemExtensionsWorkspace.shared.removeObserver(self)
+    }
+    
+    func queryExtensionProperties() {
+        print("🔍 Initiating read-only properties query...")
+        didFindActiveExtension = false // Reset state before checking
+        
+        let request = OSSystemExtensionRequest.propertiesRequest(
+            forExtensionWithIdentifier: driverID,
+            queue: DispatchQueue.main
+        )
+        request.delegate = self
+        OSSystemExtensionManager.shared.submitRequest(request)
+    }
+    
     func activate() {
+        print("🚀 Requesting driver activation...")
         let request = OSSystemExtensionRequest.activationRequest(forExtensionWithIdentifier: driverID, queue: DispatchQueue.main)
         request.delegate = self
-        let extensionManager = OSSystemExtensionManager.shared
-        extensionManager.submitRequest(request)
+        OSSystemExtensionManager.shared.submitRequest(request)
     }
     
     func request(_ request: OSSystemExtensionRequest, actionForReplacingExtension existing: OSSystemExtensionProperties, withExtension ext: OSSystemExtensionProperties) -> OSSystemExtensionRequest.ReplacementAction {
         print("Request needs to replace the extension")
-        
         return .replace
     }
     
+    // MARK: - OSSystemExtensionRequestDelegate Callbacks
+    
     func requestNeedsUserApproval(_ request: OSSystemExtensionRequest) {
         print("Request needs approval.")
+        DispatchQueue.main.async {
+            self.uiState = .waitingForUser
+        }
     }
     
+    // 💡 FIX HERE: This is where the properties query drops off its response!
+    /*func request(_ request: OSSystemExtensionRequest, foundProperties properties: [OSSystemExtensionProperties]) {
+        print("📊 Found properties array count: \(properties.count)")
+        
+        // Locate the property match for our driver bundle ID
+        if let matchingProps = properties.first(where: { $0.bundleIdentifier == driverID }) {
+            if matchingProps.isAwaitingUserApproval {
+                self.uiState = .needsActivation
+            } else if matchingProps.isUninstalling {
+                self.uiState = .waitingForUser
+            } else {
+                self.uiState = matchingProps.isEnabled ? .enabled : .needsActivation
+            }
+        }
+    }*/
+    
     func request(_ request: OSSystemExtensionRequest, didFinishWithResult result: OSSystemExtensionRequest.Result) {
-        print("Request finished successfully")
+        print("🏁 Request cycle completed.")
+        
+        DispatchQueue.main.async {
+            // Check what our properties evaluation or previous request state discovered
+            if self.didFindActiveExtension {
+                self.uiState = .enabled
+            } else {
+                // If the user disabled the extension, it finishes with .completed, but didFindActiveExtension will be false
+                self.uiState = .needsActivation
+            }
+        }
     }
     
     func request(_ request: OSSystemExtensionRequest, didFailWithError error: any Error) {
         let err = error as NSError
-        print("Request failed.")
-        print("  Domain: \(err.domain)")
-        print("  Code: \(err.code)")
-        print("  UserInfo: \(err.userInfo)")
+        print("Request failed. Domain: \(err.domain), Code: \(err.code)")
         
-        if err.domain == OSSystemExtensionErrorDomain,
-               let code = OSSystemExtensionError.Code(rawValue: err.code) {
-                switch code {
-                case .unknown:                      print("  Meaning: unknown")
-                case .missingEntitlement:           print("  Meaning: missingEntitlement")
-                case .unsupportedParentBundleLocation: print("  Meaning: unsupportedParentBundleLocation")
-                case .extensionNotFound:            print("  Meaning: extensionNotFound")
-                case .extensionMissingIdentifier:   print("  Meaning: extensionMissingIdentifier")
-                case .duplicateExtensionIdentifer:  print("  Meaning: duplicateExtensionIdentifier")
-                case .unknownExtensionCategory:     print("  Meaning: unknownExtensionCategory")
-                case .codeSignatureInvalid:         print("  Meaning: codeSignatureInvalid")
-                case .validationFailed:             print("  Meaning: validationFailed")
-                case .forbiddenBySystemPolicy:      print("  Meaning: forbiddenBySystemPolicy")
-                case .requestCanceled:              print("  Meaning: requestCanceled")
-                case .requestSuperseded:            print("  Meaning: requestSuperseded")
-                case .authorizationRequired:        print("  Meaning: authorizationRequired")
-                @unknown default:                   print("  Meaning: unrecognized \(err.code)")
-                }
-            }
+        DispatchQueue.main.async {
+            self.uiState = .needsActivation
+        }
+    }
     
-        // Also check system log for more detail
+    // MARK: - OSSystemExtensionsWorkspaceObserver
+    
+    nonisolated func systemExtensionWillBecomeEnabled(_ info: OSSystemExtensionInfo) {
+        guard info.bundleIdentifier == driverID else { return }
+        print("Workspace Notification: Extension \(driverID) will become enabled.")
+        
+        Task { @MainActor in
+            self.uiState = .enabled
+        }
+    }
+    
+    nonisolated func systemExtensionWillBecomeDisabled(_ info: OSSystemExtensionInfo) {
+        guard info.bundleIdentifier == driverID else { return }
+        print("Workspace Notification: Extension \(driverID) will become disabled.")
+        
+        Task { @MainActor in
+            self.uiState = .needsActivation
+        }
+    }
+    
+    nonisolated func systemExtensionWillBecomeInactive(_ info: OSSystemExtensionInfo) {
+        guard info.bundleIdentifier == driverID else { return }
+        print("Workspace Notification: Extension \(driverID) will become inactive.")
+        
+        Task { @MainActor in
+            self.uiState = .needsActivation
+        }
     }
 }

@@ -27,11 +27,11 @@
 					<integer>2</integer>
 				</dict>
 			</array>
-            <key>IOProbeScore</key>
-            <integer>1000</integer>
+			<key>IOProbeScore</key>
+			<integer>1000</integer>
 		</dict>
 	</dict>
 	<key>OSBundleUsageDescription</key>
-	<string>Unscroll inverts scroll direction for external mice.</string>
+	<string>Get traditional scroll direction for external mice on macOS, while Magic Mouse and trackpad remain unchanged.</string>
 </dict>
 </plist>

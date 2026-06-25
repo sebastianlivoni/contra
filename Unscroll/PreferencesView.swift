@@ -30,7 +30,7 @@ struct PreferencesView: View {
                     Text("Enable Unscroll Mouse Driver")
                 }
                 .toggleStyle(.switch)
-                .onChange(of: isDriverEnabled) { newValue in
+                .onChange(of: isDriverEnabled) { _, newValue in
                     // Call your driver management logic here
                     // e.g., DriverKitManager.shared.setDriverEnabled(newValue)
                 }
@@ -44,7 +44,7 @@ struct PreferencesView: View {
                     }
                 }
                 .disabled(!isDriverEnabled) // Grey out if driver is off
-                .onChange(of: externalMouseDirection) { newDirection in
+                .onChange(of: externalMouseDirection) { _, newDirection in
                     // Call your scrolling modification logic here
                     // e.g., DriverKitManager.shared.updateDirection(newDirection)
                 }
