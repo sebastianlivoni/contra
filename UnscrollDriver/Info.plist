@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDisplayName</key>
+	<string>UnscrollDriver</string>
+	<key>IOKitPersonalities</key>
+	<dict>
+		<key>UnscrollDriver</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+			<key>IOClass</key>
+			<string>AppleUserHIDEventService</string>
+			<key>IOProviderClass</key>
+			<string>IOHIDInterface</string>
+			<key>IOUserClass</key>
+			<string>UnscrollDriver</string>
+			<key>IOUserServerName</key>
+			<string>me.livoni.Unscroll.UnscrollDriver</string>
+			<key>VendorID</key>
+			<integer>1452</integer>
+			<key>ProductID</key>
+			<integer>2</integer>
+			<key>PrimaryUsagePage</key>
+			<integer>1</integer>
+			<key>PrimaryUsage</key>
+			<integer>2</integer>
+		</dict>
+	</dict>
+	<key>OSBundleUsageDescription</key>
+	<string>Unscroll inverts scroll direction for external mice.</string>
+</dict>
+</plist>
