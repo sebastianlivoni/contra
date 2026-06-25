@@ -18,17 +18,17 @@
 			<string>UnscrollDriver</string>
 			<key>IOUserServerName</key>
 			<string>me.livoni.Unscroll.UnscrollDriver</string>
-            <key>DeviceUsagePairs</key>
-            <array>
-                <dict>
-                    <key>DeviceUsagePage</key>
-                    <integer>1</integer>
-                    <key>DeviceUsage</key>
-                    <integer>2</integer>
-                </dict>
-            </array>
-            <key>IOProbeScore</key>
-            <integer>10000</integer>
+			<key>DeviceUsagePairs</key>
+			<array>
+				<dict>
+					<key>DeviceUsagePage</key>
+					<integer>1</integer>
+					<key>DeviceUsage</key>
+					<integer>2</integer>
+				</dict>
+			</array>
+            <key>VendorID</key>
+            <integer>1133</integer>
 		</dict>
 	</dict>
 	<key>OSBundleUsageDescription</key>

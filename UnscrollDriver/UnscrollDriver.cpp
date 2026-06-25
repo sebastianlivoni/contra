@@ -88,8 +88,13 @@ IMPL(UnscrollDriver, Start)
 
 bool UnscrollDriver::parseElements(OSArray *elements)
 {
-    bool result = false;
+    // 1. Let the base class parse everything it needs (X/Y axes, buttons, etc.)
+    // If the base class fails, fail immediately.
+    if (!super::parseElements(elements)) {
+        return false;
+    }
     
+    // 2. Now parse our specific scroll elements
     for (unsigned int i = 0; i < elements->getCount(); i++) {
         IOHIDElement *element = OSDynamicCast(IOHIDElement, elements->getObject(i));
         
@@ -103,47 +108,37 @@ bool UnscrollDriver::parseElements(OSArray *elements)
         if (usagePage == kHIDPage_GenericDesktop && usage == kHIDUsage_GD_Wheel) {
             _scroll.vWheel = element;
             _scroll.vWheel->retain();
-            result = true;
         }
         else if (usagePage == kHIDPage_Consumer && usage == kHIDUsage_Csmr_ACPan) {
             _scroll.hPan = element;
             _scroll.hPan->retain();
-            result = true;
         }
     }
     
-    return result;
+    // Return true since the base class succeeded and our driver is good to go
+    return true;
 }
 
 void UnscrollDriver::handleScrollReport(uint64_t timestamp, uint32_t reportID) {
-    os_log(OS_LOG_DEFAULT, "handleScrollReport");
-    
-    int32_t dy = 0;
-    int32_t dx = 0;
-    bool hasScrollData = false;
-    
+    // 1. Mutate the vertical scroll element value in place
     if (_scroll.vWheel && _scroll.vWheel->getReportID() == reportID) {
         int32_t rawValue = _scroll.vWheel->getValue(0);
         if (rawValue != 0) {
-            dy = -rawValue;
-            hasScrollData = true;
+            // Invert the value directly at the source
+            _scroll.vWheel->setValue(-rawValue);
         }
     }
     
+    // 2. Mutate the horizontal pan element value in place
     if (_scroll.hPan && _scroll.hPan->getReportID() == reportID) {
         int32_t rawValue = _scroll.hPan->getValue(0);
         if (rawValue != 0) {
-            dx = -rawValue;
-            hasScrollData = true;
+            // Invert the value directly at the source
+            _scroll.hPan->setValue(-rawValue);
         }
     }
     
-    if (hasScrollData) {
-        os_log(OS_LOG_DEFAULT, "Inverting Scroll -> dy: %d, dx: %d", dy, dx);
-        
-        dispatchRelativeScrollWheelEvent(timestamp, dy, dx, 0, true);
-    } else {
-        super::handleScrollReport(timestamp, reportID);
-    }
+    // 3. Always pass the modified report to the super class.
+    // This gives you the native macOS acceleration curve back!
+    super::handleScrollReport(timestamp, reportID);
 }
-
