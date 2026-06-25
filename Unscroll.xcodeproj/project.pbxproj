@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		965589732FEDF42D003F6A0A /* Unscroll Web Navigation.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 965589622FEDF42D003F6A0A /* Unscroll Web Navigation.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		967E32F72FED22C800AB978C /* DriverKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A8BD502FED1CC400DEBE26 /* DriverKit.framework */; };
 		967E33002FED22C800AB978C /* me.livoni.Unscroll.UnscrollDriver.dext in Embed System Extensions */ = {isa = PBXBuildFile; fileRef = 967E32F62FED22C800AB978C /* me.livoni.Unscroll.UnscrollDriver.dext */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		96980B632FED2C060024319C /* HIDDriverKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96980B622FED2C060024319C /* HIDDriverKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		965589712FEDF42D003F6A0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 96A8BD332FED1BFE00DEBE26 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 965589612FEDF42D003F6A0A;
+			remoteInfo = SafariExtension;
+		};
 		967E32FE2FED22C800AB978C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 96A8BD332FED1BFE00DEBE26 /* Project object */;
@@ -23,6 +31,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		965589592FEDF3A7003F6A0A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				965589732FEDF42D003F6A0A /* Unscroll Web Navigation.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		96A8BD5F2FED1CC400DEBE26 /* Embed System Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -37,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		965589622FEDF42D003F6A0A /* Unscroll Web Navigation.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Unscroll Web Navigation.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		967E32F62FED22C800AB978C /* me.livoni.Unscroll.UnscrollDriver.dext */ = {isa = PBXFileReference; explicitFileType = "wrapper.driver-extension"; includeInIndex = 0; path = me.livoni.Unscroll.UnscrollDriver.dext; sourceTree = BUILT_PRODUCTS_DIR; };
 		96980B622FED2C060024319C /* HIDDriverKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HIDDriverKit.framework; path = Platforms/DriverKit.platform/Developer/SDKs/DriverKit25.5.sdk/System/DriverKit/System/Library/Frameworks/HIDDriverKit.framework; sourceTree = DEVELOPER_DIR; };
 		96A8BD3B2FED1BFE00DEBE26 /* Unscroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unscroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +64,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		965589742FEDF42D003F6A0A /* Exceptions for "SafariExtension" folder in "Unscroll Web Navigation" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 965589612FEDF42D003F6A0A /* Unscroll Web Navigation */;
+		};
 		967E33012FED22C800AB978C /* Exceptions for "UnscrollDriver" folder in "UnscrollDriver" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -54,6 +81,14 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		965589632FEDF42D003F6A0A /* SafariExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				965589742FEDF42D003F6A0A /* Exceptions for "SafariExtension" folder in "Unscroll Web Navigation" target */,
+			);
+			path = SafariExtension;
+			sourceTree = "<group>";
+		};
 		967E32F82FED22C800AB978C /* UnscrollDriver */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -70,6 +105,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9655895F2FEDF42D003F6A0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		967E32F32FED22C800AB978C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -94,6 +136,7 @@
 			children = (
 				96A8BD3D2FED1BFE00DEBE26 /* Unscroll */,
 				967E32F82FED22C800AB978C /* UnscrollDriver */,
+				965589632FEDF42D003F6A0A /* SafariExtension */,
 				96A8BD4F2FED1CC400DEBE26 /* Frameworks */,
 				96A8BD3C2FED1BFE00DEBE26 /* Products */,
 			);
@@ -104,6 +147,7 @@
 			children = (
 				96A8BD3B2FED1BFE00DEBE26 /* Unscroll.app */,
 				967E32F62FED22C800AB978C /* me.livoni.Unscroll.UnscrollDriver.dext */,
+				965589622FEDF42D003F6A0A /* Unscroll Web Navigation.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,6 +174,28 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		965589612FEDF42D003F6A0A /* Unscroll Web Navigation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 965589752FEDF42D003F6A0A /* Build configuration list for PBXNativeTarget "Unscroll Web Navigation" */;
+			buildPhases = (
+				9655895E2FEDF42D003F6A0A /* Sources */,
+				9655895F2FEDF42D003F6A0A /* Frameworks */,
+				965589602FEDF42D003F6A0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				965589632FEDF42D003F6A0A /* SafariExtension */,
+			);
+			name = "Unscroll Web Navigation";
+			packageProductDependencies = (
+			);
+			productName = SafariExtension;
+			productReference = 965589622FEDF42D003F6A0A /* Unscroll Web Navigation.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		967E32F52FED22C800AB978C /* UnscrollDriver */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 967E33022FED22C800AB978C /* Build configuration list for PBXNativeTarget "UnscrollDriver" */;
@@ -161,11 +227,13 @@
 				96A8BD382FED1BFE00DEBE26 /* Frameworks */,
 				96A8BD392FED1BFE00DEBE26 /* Resources */,
 				96A8BD5F2FED1CC400DEBE26 /* Embed System Extensions */,
+				965589592FEDF3A7003F6A0A /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				967E32FF2FED22C800AB978C /* PBXTargetDependency */,
+				965589722FEDF42D003F6A0A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				96A8BD3D2FED1BFE00DEBE26 /* Unscroll */,
@@ -187,6 +255,10 @@
 				LastSwiftUpdateCheck = 2650;
 				LastUpgradeCheck = 2650;
 				TargetAttributes = {
+					965589612FEDF42D003F6A0A = {
+						CreatedOnToolsVersion = 26.5;
+						LastSwiftMigration = 2650;
+					};
 					967E32F52FED22C800AB978C = {
 						CreatedOnToolsVersion = 26.5;
 					};
@@ -212,11 +284,19 @@
 			targets = (
 				96A8BD3A2FED1BFE00DEBE26 /* Unscroll */,
 				967E32F52FED22C800AB978C /* UnscrollDriver */,
+				965589612FEDF42D003F6A0A /* Unscroll Web Navigation */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		965589602FEDF42D003F6A0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		967E32F42FED22C800AB978C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -234,6 +314,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9655895E2FEDF42D003F6A0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		967E32F22FED22C800AB978C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -251,6 +338,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		965589722FEDF42D003F6A0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 965589612FEDF42D003F6A0A /* Unscroll Web Navigation */;
+			targetProxy = 965589712FEDF42D003F6A0A /* PBXContainerItemProxy */;
+		};
 		967E32FF2FED22C800AB978C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 967E32F52FED22C800AB978C /* UnscrollDriver */;
@@ -259,6 +351,81 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		965589762FEDF42D003F6A0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6HH7K3R53J;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SafariExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Unscroll Web Navigation";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Sebastian Livoni. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = me.livoni.Unscroll.SafariExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		965589772FEDF42D003F6A0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6HH7K3R53J;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SafariExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Unscroll Web Navigation";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Sebastian Livoni. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = me.livoni.Unscroll.SafariExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		967E33032FED22C800AB978C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -270,7 +437,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6HH7K3R53J;
-				DRIVERKIT_DEPLOYMENT_TARGET = 25.5;
+				DRIVERKIT_DEPLOYMENT_TARGET = 25.0;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/System/DriverKit/System/Library/Frameworks",
@@ -299,7 +466,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6HH7K3R53J;
-				DRIVERKIT_DEPLOYMENT_TARGET = 25.5;
+				DRIVERKIT_DEPLOYMENT_TARGET = 25.0;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/System/DriverKit/System/Library/Frameworks",
@@ -518,6 +685,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		965589752FEDF42D003F6A0A /* Build configuration list for PBXNativeTarget "Unscroll Web Navigation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				965589762FEDF42D003F6A0A /* Debug */,
+				965589772FEDF42D003F6A0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		967E33022FED22C800AB978C /* Build configuration list for PBXNativeTarget "UnscrollDriver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -1,0 +1,232 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "1. Open **System Settings**." : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Åbn **Systemindstillinger**."
+          }
+        }
+      }
+    },
+    "2. Navigate to **Privacy & Security**." : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Gå til **Privatliv og sikkerhed**."
+          }
+        }
+      }
+    },
+    "3. Scroll down and click **Allow** next to UnscrollDriver." : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Rul ned, og klik på **Tillad** ud for UnscrollDriver."
+          }
+        }
+      }
+    },
+    "About Unscroll" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Om Unscroll"
+          }
+        }
+      }
+    },
+    "Action Required" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Handling påkrævet"
+          }
+        }
+      }
+    },
+    "Checking driver status..." : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontrollerer driverstatus..."
+          }
+        }
+      }
+    },
+    "Driver fully active!" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Driver er fuldt aktiv!"
+          }
+        }
+      }
+    },
+    "Driver Status" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Driver Status"
+          }
+        }
+      }
+    },
+    "Enable Unscroll Driver" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktiver Unscroll Driver"
+          }
+        }
+      }
+    },
+    "Enable Unscroll Mouse Driver" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktivér Unscroll musedriver"
+          }
+        }
+      }
+    },
+    "External Mouse Settings" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indstillinger for ekstern mus"
+          }
+        }
+      }
+    },
+    "Global System Scroll Direction:" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Globalt systems rulleretning:"
+          }
+        }
+      }
+    },
+    "Independent of your MacBook trackpad settings." : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uafhængigt af dine MacBook-pegefeltindstillinger."
+          }
+        }
+      }
+    },
+    "Install Driver" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installer driver"
+          }
+        }
+      }
+    },
+    "Scroll Direction:" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rulleretning:"
+          }
+        }
+      }
+    },
+    "System Information" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systemoplysninger"
+          }
+        }
+      }
+    },
+    "Third-party licenses" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tredjepartslicenser"
+          }
+        }
+      }
+    },
+    "Unscroll" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unscroll"
+          }
+        }
+      }
+    },
+    "Unscroll requires a system driver extension to hook up your mouse features." : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unscroll kræver en systemdriverudvidelse for at tilslutte dine musefunktioner."
+          }
+        }
+      }
+    },
+    "Version %@ (%@)" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %1$@ (%2$@)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Version %1$@ (%2$@)"
+          }
+        }
+      }
+    },
+    "Waiting for approval..." : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Venter på godkendelse..."
+          }
+        }
+      }
+    },
+    "Your mouse wheel will now scroll as expected" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dit musehjul vil nu scrolle som forventet"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.2"
+}

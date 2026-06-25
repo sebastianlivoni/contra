@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct UnscrollApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         Window("Unscroll", id: "unscroll") {
             ContentView()
@@ -16,5 +18,14 @@ struct UnscrollApp: App {
         }
         .windowResizability(.contentSize)
         .windowStyle(.hiddenTitleBar)
+        .commands {
+            UnscrollCommands()
+        }
+        
+        Window("About Unscroll", id: "about") {
+            AboutView()
+                .applyVisualEffect()
+        }
+        .windowResizability(.contentSize)
     }
 }
