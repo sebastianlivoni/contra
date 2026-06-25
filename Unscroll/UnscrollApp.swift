@@ -12,6 +12,8 @@ struct UnscrollApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            
+            PreferencesView()
         }
     }
 }
