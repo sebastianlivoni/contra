@@ -31,6 +31,9 @@
         }
       }
     },
+    "About" : {
+
+    },
     "About Unscroll" : {
       "localizations" : {
         "da" : {
@@ -51,6 +54,9 @@
         }
       }
     },
+    "Aktivér systemudvidelsen" : {
+
+    },
     "Checking driver status..." : {
       "localizations" : {
         "da" : {
@@ -62,6 +68,7 @@
       }
     },
     "Checking scroll system extension status" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -154,6 +161,9 @@
         }
       }
     },
+    "Får din eksterne mus til at rulle som på Windows." : {
+
+    },
     "Font Size (%.0f pts)" : {
       "localizations" : {
         "da" : {
@@ -163,6 +173,9 @@
           }
         }
       }
+    },
+    "Fortsæt" : {
+
     },
     "General" : {
       "localizations" : {
@@ -184,6 +197,9 @@
         }
       }
     },
+    "Hello, World!" : {
+
+    },
     "Independent of your MacBook trackpad settings." : {
       "localizations" : {
         "da" : {
@@ -204,6 +220,9 @@
         }
       }
     },
+    "Jeg gør det senere" : {
+
+    },
     "Kom godt i gang" : {
 
     },
@@ -216,6 +235,12 @@
           }
         }
       }
+    },
+    "Nødvendig for at vende rulleretningen" : {
+
+    },
+    "Onboarding" : {
+
     },
     "Safari Web Extension" : {
       "localizations" : {
@@ -288,6 +313,7 @@
       }
     },
     "System extension is disabled" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -298,6 +324,7 @@
       }
     },
     "System extension is enabled" : {
+      "extractionState" : "stale",
       "localizations" : {
         "da" : {
           "stringUnit" : {
@@ -369,6 +396,9 @@
           }
         }
       }
+    },
+    "Vend musehjulets retning" : {
+
     },
     "Version %@ (%@)" : {
       "localizations" : {

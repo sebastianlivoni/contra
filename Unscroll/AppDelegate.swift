@@ -8,7 +8,7 @@
 import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
-    var onboardingWindow: GlassBackgroundWindow?
+    /*var onboardingWindow: GlassBackgroundWindow?
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         let window = GlassBackgroundWindow()
@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.animatePopIn()
         
         NSApp.activate(ignoringOtherApps: true)
-    }
+    }*/
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true

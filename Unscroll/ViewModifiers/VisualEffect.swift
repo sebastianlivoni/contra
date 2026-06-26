@@ -7,14 +7,21 @@
 
 import SwiftUI
 
+struct VisualEffectView: NSViewRepresentable {
+    func makeNSView(context: Context) -> NSGlassEffectView {
+        let effectView = NSGlassEffectView()
+        effectView.style = .regular
+        return effectView
+    }
+
+    func updateNSView(_ nsView: NSGlassEffectView, context: Context) {
+    }
+}
+
 struct VisualEffectModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .toolbar(removing: .title)
-            .toolbarBackground(.hidden, for: .windowToolbar)
-            .containerBackground(.thickMaterial, for: .window)
-            .windowMinimizeBehavior(.disabled)
-            .windowResizeBehavior(.disabled)
+            .background(VisualEffectView().ignoresSafeArea())
     }
 }
 

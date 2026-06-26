@@ -10,27 +10,39 @@ import SwiftUI
 import Combine
 import SafariServices
 import os.log
+import SystemExtensions
 
-enum DiagnosticState<T> {
-    case unknown       // Initial state before check runs
-    case fetching      // Actively pulling information
-    case success(T)    // Successfully retrieved the state
+enum DextStatus: Equatable {
+    case active
+    case inactive
+    case disabled
+    case requiresUserApproval
+    case requiresReboot
+}
+
+enum DiagnosticState<T: Equatable>: Equatable {
+    case unknown
+    case fetching
+    case success(T)
 }
 
 @Observable
 @MainActor
-class DiagnosticsManager {
+final class DiagnosticsManager: NSObject, OSSystemExtensionRequestDelegate, OSSystemExtensionsWorkspaceObserver {
     var naturalScrollingState: DiagnosticState<Bool> = .unknown
     var safariExtensionState: DiagnosticState<Bool> = .unknown
-    var dextState: DiagnosticState<Bool> = .unknown
+    var dextState: DiagnosticState<DextStatus> = .unknown
     
     private var cancellables = Set<AnyCancellable>()
     
     private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: String(describing: DiagnosticsManager.self))
     
     private let safariExtensionIdentifier = "me.livoni.Unscroll.SafariExtension"
+    private let driverIdentifier = "me.livoni.Unscroll.UnscrollDriver"
     
-    init() {
+    override init() {
+        super.init()
+        
         naturalScrollingState = .fetching
         safariExtensionState = .fetching
         dextState = .fetching
@@ -42,16 +54,19 @@ class DiagnosticsManager {
                 self?.checkAllStatuses()
             }
             .store(in: &cancellables)
+        
+        setupWorkspaceObserver()
     }
     
     func checkAllStatuses() {
         Task {
             async let checkScroll: Void = checkNaturalScrolling()
             async let checkSafari: Void = checkSafariExtensionStatus()
-            async let checkDext: Void = checkDextStatus()
             
-            let _ = await (checkScroll, checkSafari, checkDext)
+            let _ = await (checkScroll, checkSafari)
         }
+        
+        queryExtensionProperties()
     }
     
     private func checkNaturalScrolling() async {
@@ -75,12 +90,6 @@ class DiagnosticsManager {
         }
     }
     
-    func checkDextStatus() async {
-        // Simulating the dext check delay. Replace with your structural IOKit service verification.
-        try? await Task.sleep(for: .milliseconds(400))
-        self.dextState = .success(true)
-    }
-    
     func openSafariExtensionSettings() {
         Task {
             do {
@@ -92,8 +101,8 @@ class DiagnosticsManager {
     }
     
     // TODO: Make it open the DEXT settings correctly
-    func openSystemDextSettings() {
-        if let url = URL(string: "x-apple.systempreferences:com.apple.Trackpad-Settings.extension") {
+    func openSystemExtensionsSettings() {
+        if let url = URL(string: "x-apple.systempreferences:com.apple.LoginItems-Settings.extension?ExtensionItems") {
             NSWorkspace.shared.open(url)
         }
     }
@@ -104,83 +113,119 @@ class DiagnosticsManager {
             NSWorkspace.shared.open(url)
         }
     }
-}
-
-/*class DiagnosticsManager: ObservableObject {
-    @Published var isNaturalScrollingEnabled: Bool = false
-    @Published var isSafariExtensionEnabled: Bool = false
-    @Published var isDextActive: Bool = false
     
-    private var cancellables = Set<AnyCancellable>()
-    // Replace with your Safari Extension's Bundle Identifier
-    private let safariExtensionIdentifier = "me.livoni.Unscroll.SafariExtension"
+    // MARK: - System Extension
+    func activateSystemExtension() {
+        let request = OSSystemExtensionRequest.activationRequest(forExtensionWithIdentifier: driverIdentifier, queue: DispatchQueue.main)
+        request.delegate = self
+        logger.debug("Submitting activation request for system extension")
+        OSSystemExtensionManager.shared.submitRequest(request)
+    }
     
-    init() {
-        checkAllStatuses()
+    func deactivateSystemExtension() {
+        let request = OSSystemExtensionRequest.deactivationRequest(forExtensionWithIdentifier: driverIdentifier, queue: DispatchQueue.main)
+        request.delegate = self
+        logger.debug("Submitting deactivation request for system extension")
+        OSSystemExtensionManager.shared.submitRequest(request)
+    }
+    
+    private func setupWorkspaceObserver() {
+        do {
+            logger.debug("Adding workspace observer for system extension")
+            try OSSystemExtensionsWorkspace.shared.addObserver(self)
+        } catch {
+            logger.error("Failed to add workspace observer: \(error.localizedDescription)")
+        }
+    }
+    
+    deinit {
+        logger.debug("Removing workspace observer for system extension")
+        OSSystemExtensionsWorkspace.shared.removeObserver(self)
+    }
+    
+    func queryExtensionProperties() {
+        let request = OSSystemExtensionRequest.propertiesRequest(
+            forExtensionWithIdentifier: driverIdentifier,
+            queue: DispatchQueue.main
+        )
+        request.delegate = self
+        logger.debug("Submitting properties request for system extension")
+        OSSystemExtensionManager.shared.submitRequest(request)
+    }
+    
+    // MARK: - OSSystemExtensionRequestDelegate
+    func request(_ request: OSSystemExtensionRequest, actionForReplacingExtension existing: OSSystemExtensionProperties, withExtension ext: OSSystemExtensionProperties) -> OSSystemExtensionRequest.ReplacementAction {
+        logger.debug("Replacing system extension")
+        return .replace
+    }
+    
+    func requestNeedsUserApproval(_ request: OSSystemExtensionRequest) {
+        logger.debug("System extension requires user approval")
+        dextState = .success(.requiresUserApproval)
+    }
+    
+    func request(_ request: OSSystemExtensionRequest, didFinishWithResult result: OSSystemExtensionRequest.Result) {
+        switch result {
+        case .completed:
+            logger.debug("System extension finished with completed")
+            dextState = .success(.active)
+        case .willCompleteAfterReboot:
+            logger.debug("System extension finished with will complete after reboot")
+            dextState = .success(.requiresReboot)
+        default:	
+            logger.debug("System extension finished with unknown result \(result.rawValue)")
+            dextState = .unknown
+        }
+    }
+    
+    func request(_ request: OSSystemExtensionRequest, didFailWithError error: any Error) {
+        logger.error("System extension request failed with error: \(error.localizedDescription)")
+        dextState = .unknown
+    }
+    
+    func request(_ request: OSSystemExtensionRequest, foundProperties properties: [OSSystemExtensionProperties]) {
+        var detectedStatus: DextStatus? = nil
         
-        // Listen for the app coming to the foreground to re-check states
-        // (e.g., if the user just returned from Safari or System Settings)
-        NotificationCenter.default.publisher(for: NSApplication.willBecomeActiveNotification)
-            .sink { [weak self] _ in
-                self?.checkAllStatuses()
+        for prop in properties {
+            if prop.isEnabled {
+                detectedStatus = .active
+                logger.debug("System extension is active (system extension properties)")
+                break
+            } else if prop.isAwaitingUserApproval {
+                logger.debug("System extension requires user approval (system extension properties)")
+                detectedStatus = .requiresUserApproval
+            } else if prop.isUninstalling && detectedStatus == nil {
+                logger.debug("System extension is uninstalling (system extension properties)")
+                detectedStatus = .inactive
             }
-            .store(in: &cancellables)
-    }
-    
-    func checkAllStatuses() {
-        checkNaturalScrolling()
-        checkSafariExtensionStatus()
-        checkDextStatus()
-    }
-    
-    /// Reads the global macOS domain for scroll direction
-    private func checkNaturalScrolling() {
-        // com.apple.swipescrolldirection: 1 = Natural, 0 = Traditional
-        let defaults = UserDefaults.standard
-        let persistentDomain = defaults.persistentDomain(forName: UserDefaults.globalDomain)
-        if let swipeDirection = persistentDomain?["com.apple.swipescrolldirection"] as? Int {
-            self.isNaturalScrollingEnabled = (swipeDirection == 1)
+        }
+        
+        if let status = detectedStatus {
+            self.dextState = .success(status)
         } else {
-            // Default macOS behavior fallback if reading fails
-            self.isNaturalScrollingEnabled = true
+            self.dextState = .unknown
         }
     }
     
-    /// Checks if the Safari Extension is checked in Safari Preferences
-    private func checkSafariExtensionStatus() {
-        /*SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: safariExtensionIdentifier) { [weak self] state, error in
-            DispatchQueue.main.async {
-                if let state = state {
-                    self?.isSafariExtensionEnabled = state.isEnabled
-                } else {
-                    self?.isSafariExtensionEnabled = false
-                }
-            }
-        }*/
-    }
-    
-    /// Checks if your DriverKit driver is responsive
-    private func checkDextStatus() {
-        // Implement your IOKit / DriverKit UserClient connection check here.
-        // E.g., checking if IOServiceMatching your dext returns an active object.
-        // For demonstration, we'll keep it as a simulated state or mock check.
-        self.isDextActive = true
-    }
-    
-    /// Directs the user directly to Safari's Extension preferences panel
-    func openSafariExtensionSettings() {
-        SFSafariApplication.showPreferencesForExtension(withIdentifier: safariExtensionIdentifier) { error in
-            if let error = error {
-                print("Error opening Safari extension settings: \(error.localizedDescription)")
-            }
+    // MARK: - OSSystemExtensionsWorkspaceObserver
+    nonisolated func systemExtensionWillBecomeEnabled(_ systemExtensionInfo: OSSystemExtensionInfo) {
+        logger.debug("System extension will become enabled")
+        Task { @MainActor in
+            dextState = .success(.active)
         }
     }
-    
-    /// Opens the Keyboard/Mouse system panel (where scrolling options sit)
-    func openSystemScrollingSettings() {
-        if let url = URL(string: "x-apple.systempreferences:com.apple.Trackpad-Settings.extension") {
-            NSWorkspace.shared.open(url)
+
+    nonisolated func systemExtensionWillBecomeDisabled(_ systemExtensionInfo: OSSystemExtensionInfo) {
+        logger.debug("System extension will become disabled")
+        Task { @MainActor in
+            dextState = .success(.disabled)
+        }
+    }
+
+    nonisolated func systemExtensionWillBecomeInactive(_ systemExtensionInfo: OSSystemExtensionInfo) {
+        logger.debug("System extension will become inactive")
+        Task { @MainActor in
+            dextState = .success(.inactive)
         }
     }
 }
-*/

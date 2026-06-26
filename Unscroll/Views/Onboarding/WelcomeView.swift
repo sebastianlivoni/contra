@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-//
-//  WelcomeView.swift
-//  Unscroll
-//
-
-import SwiftUI
-
 struct WelcomeView: View {
     var body: some View {
         NavigationStack {
@@ -35,23 +28,21 @@ struct WelcomeView: View {
                 }
                 
                 NavigationLink {
-                    
+                    QuickStartView()
                 } label: {
                     Text("Kom godt i gang")
                         .foregroundColor(.white)
                         .padding(.horizontal, 20)
-                        .padding(.vertical, 10)
-                        .background(Color.accentColor)
-                        .clipShape(Capsule())
+                        .padding(.vertical, 8)
                         .fontWeight(.medium)
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(.glassProminent)
+                .clipShape(RoundedRectangle(cornerRadius: 50))
                 .padding(.top, 15)
             }
             .multilineTextAlignment(.center)
             .padding(45)
-            .frame(width: 544)
-            .frame(minHeight: 450, maxHeight: .infinity)
+            .frame(width: 544, height: 670)
             .navigationBarBackButtonHidden(true)
         }
     }

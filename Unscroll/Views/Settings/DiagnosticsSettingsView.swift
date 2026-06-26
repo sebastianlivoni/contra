@@ -33,7 +33,7 @@ struct DiagnosticsSettingsView: View {
             
             Section(header: Text("Scroll System Extension")) {
                 HStack {
-                    StatusIndicator(state: diagnosticsManager.dextState)
+                    /*StatusIndicator(state: diagnosticsManager.dextState == .success(.active))
                     
                     switch diagnosticsManager.dextState {
                     case .unknown:
@@ -46,7 +46,7 @@ struct DiagnosticsSettingsView: View {
                         Text(isEnabled ? "System extension is enabled" : "System extension is disabled")
                             .foregroundColor(.primary)
                     }
-                    Spacer()
+                    Spacer()*/
                 }
             }
             
