@@ -54,6 +54,15 @@
         }
       }
     },
+    "Aktivér nu" : {
+
+    },
+    "Aktivér Safari web-udvidelsen" : {
+
+    },
+    "Aktivér Safari webudvidelsen" : {
+
+    },
     "Aktivér systemudvidelsen" : {
 
     },
@@ -177,6 +186,12 @@
     "Fortsæt" : {
 
     },
+    "Fortsæt alligevel" : {
+
+    },
+    "Gå frem og tilbage" : {
+
+    },
     "General" : {
       "localizations" : {
         "da" : {
@@ -239,6 +254,9 @@
     "Nødvendig for at vende rulleretningen" : {
 
     },
+    "Nødvendig for bruge sideknapperne på din mus i Safari" : {
+
+    },
     "Onboarding" : {
 
     },
@@ -271,6 +289,9 @@
           }
         }
       }
+    },
+    "Safari web-udvidelsen er ikke aktiv" : {
+
     },
     "Scroll Direction:" : {
       "localizations" : {
@@ -344,6 +365,9 @@
         }
       }
     },
+    "Systemudvidelsen er ikke aktiv" : {
+
+    },
     "Third-party licenses" : {
       "localizations" : {
         "da" : {
@@ -397,6 +421,12 @@
         }
       }
     },
+    "Unscroll virker ikke, før Safari webudvidelsen er aktiveret. Aktivér den nu for at fortsætte." : {
+
+    },
+    "Unscroll virker ikke, før systemudvidelsen er aktiveret. Aktivér den nu for at fortsætte." : {
+
+    },
     "Vend musehjulets retning" : {
 
     },
@@ -415,6 +445,9 @@
           }
         }
       }
+    },
+    "Vis forrige eller næste side i Safari med sideknapperne på din mus." : {
+
     },
     "Waiting for approval..." : {
       "localizations" : {

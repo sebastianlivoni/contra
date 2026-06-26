@@ -28,7 +28,7 @@ struct WelcomeView: View {
                 }
                 
                 NavigationLink {
-                    QuickStartView()
+                    DextDriverView()
                 } label: {
                     Text("Kom godt i gang")
                         .foregroundColor(.white)
