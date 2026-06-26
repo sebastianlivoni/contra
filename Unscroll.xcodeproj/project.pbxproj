@@ -78,6 +78,13 @@
 			);
 			target = 967E32F52FED22C800AB978C /* UnscrollDriver */;
 		};
+		968A26412FEEF63E0014935B /* Exceptions for "Unscroll" folder in "Unscroll" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 96A8BD3A2FED1BFE00DEBE26 /* Unscroll */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -99,6 +106,9 @@
 		};
 		96A8BD3D2FED1BFE00DEBE26 /* Unscroll */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				968A26412FEEF63E0014935B /* Exceptions for "Unscroll" folder in "Unscroll" target */,
+			);
 			path = Unscroll;
 			sourceTree = "<group>";
 		};
@@ -622,14 +632,16 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Unscroll/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Unscroll;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Sebastian Livoni. All rights reserved.";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.livoni.Unscroll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -660,14 +672,16 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Unscroll/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Unscroll;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Sebastian Livoni. All rights reserved.";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.livoni.Unscroll;
 				PRODUCT_NAME = "$(TARGET_NAME)";

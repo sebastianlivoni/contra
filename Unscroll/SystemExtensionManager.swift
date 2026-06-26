@@ -28,7 +28,6 @@ final class SystemExtensionManager: NSObject, OSSystemExtensionRequestDelegate, 
         super.init()
         
         setupWorkspaceObserver()
-        queryExtensionProperties()
         activate()
     }
     
@@ -97,13 +96,16 @@ final class SystemExtensionManager: NSObject, OSSystemExtensionRequestDelegate, 
     func request(_ request: OSSystemExtensionRequest, didFinishWithResult result: OSSystemExtensionRequest.Result) {
         print("🏁 Request cycle completed.")
         
+        //queryExtensionProperties()
+        
         DispatchQueue.main.async {
-            // Check what our properties evaluation or previous request state discovered
-            if self.didFindActiveExtension {
+            switch result {
+            case .completed:
                 self.uiState = .enabled
-            } else {
-                // If the user disabled the extension, it finishes with .completed, but didFindActiveExtension will be false
+            case .willCompleteAfterReboot:
                 self.uiState = .needsActivation
+            @unknown default:
+                self.uiState = .checking
             }
         }
     }

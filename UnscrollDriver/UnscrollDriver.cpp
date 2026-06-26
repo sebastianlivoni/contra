@@ -64,11 +64,11 @@ IMPL(UnscrollDriver, Start)
         return ret;
     }
     
-    os_log(OS_LOG_DEFAULT, "Hello World");
+    //os_log(OS_LOG_DEFAULT, "Hello World");
     
     _elements = getElements();
     if (!_elements) {
-        os_log(OS_LOG_DEFAULT, "Failed to get elements");
+        //os_log(OS_LOG_DEFAULT, "Failed to get elements");
         Stop(provider, SUPERDISPATCH);
         return kIOReturnError;
     }
@@ -76,7 +76,7 @@ IMPL(UnscrollDriver, Start)
     _elements->retain();
     
     if (!parseElements(_elements)) {
-        os_log(OS_LOG_DEFAULT, "No supported elements found");
+        //os_log(OS_LOG_DEFAULT, "No supported elements found");
         Stop(provider, SUPERDISPATCH);
         return kIOReturnUnsupported;
     }

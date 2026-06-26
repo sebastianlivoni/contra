@@ -61,6 +61,46 @@
         }
       }
     },
+    "Checking scroll system extension status" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tjekker status for systemudvidelse til rulning"
+          }
+        }
+      }
+    },
+    "Checking scroll system settings status" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tjekker status for systemindstillinger til rulning"
+          }
+        }
+      }
+    },
+    "Checking web extension status" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tjekker status for webudvidelsen"
+          }
+        }
+      }
+    },
+    "Diagnostics" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diagnostik"
+          }
+        }
+      }
+    },
     "Driver fully active!" : {
       "localizations" : {
         "da" : {
@@ -80,6 +120,9 @@
           }
         }
       }
+    },
+    "En bedre måde at kopiere og indsætte" : {
+
     },
     "Enable Unscroll Driver" : {
       "localizations" : {
@@ -107,6 +150,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Indstillinger for ekstern mus"
+          }
+        }
+      }
+    },
+    "Font Size (%.0f pts)" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skriftstørrelse (%.0f pkt.)"
+          }
+        }
+      }
+    },
+    "General" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Generelt"
           }
         }
       }
@@ -141,12 +204,105 @@
         }
       }
     },
+    "Kom godt i gang" : {
+
+    },
+    "Natural scrolling" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naturlig rulning"
+          }
+        }
+      }
+    },
+    "Safari Web Extension" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Webudvidelse til Safari"
+          }
+        }
+      }
+    },
+    "Safari Web Extension is disabled" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Webudvidelse til Safari er deaktiveret"
+          }
+        }
+      }
+    },
+    "Safari Web Extension is enabled" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Webudvidelse til Safari er aktiveret"
+          }
+        }
+      }
+    },
     "Scroll Direction:" : {
       "localizations" : {
         "da" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rulleretning:"
+          }
+        }
+      }
+    },
+    "Scroll System Extension" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systemudvidelse til rulning"
+          }
+        }
+      }
+    },
+    "Scroll System Settings" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systemindstillinger til rulning"
+          }
+        }
+      }
+    },
+    "Show Previews" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vis forhåndsvisninger"
+          }
+        }
+      }
+    },
+    "System extension is disabled" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systemudvidelse er deaktiveret"
+          }
+        }
+      }
+    },
+    "System extension is enabled" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systemudvidelse er aktiveret"
           }
         }
       }
@@ -171,6 +327,26 @@
         }
       }
     },
+    "Traditional scrolling" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traditionel rulning"
+          }
+        }
+      }
+    },
+    "Unknown status" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ukendt status"
+          }
+        }
+      }
+    },
     "Unscroll" : {
       "localizations" : {
         "da" : {
@@ -180,6 +356,9 @@
           }
         }
       }
+    },
+    "Unscroll er en tidsmaskine til dit udklipsholder, som lader dig finde alt, hvad du nogensinde har kopieret, og bruge det når som helst, når du har brug for det igen." : {
+
     },
     "Unscroll requires a system driver extension to hook up your mouse features." : {
       "localizations" : {
