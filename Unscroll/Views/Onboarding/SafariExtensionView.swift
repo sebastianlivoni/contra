@@ -70,8 +70,8 @@ struct SafariExtensionView: View {
     private func completeOnboarding() {
         progress = .completed
         hasShownOnboarding = true
-        openWindow(id: "unscroll")
-        dismissWindow(id: "onboarding")
+        openWindow(id: AppWindow.main.id)
+        dismissWindow(id: AppWindow.onboarding.id)
     }
 }
 

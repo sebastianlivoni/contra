@@ -49,6 +49,7 @@ struct UnscrollApp: App {
         .windowResizability(.contentSize)
         .windowStyle(.hiddenTitleBar)
         .defaultLaunchBehavior(.suppressed)
+        .commandsRemoved()
         
         Settings {
             SettingsView().environment(diagnosticsManager)
