@@ -4,14 +4,12 @@
 //
 //  Created by Sebastian on 28/06/2026.
 //
-
 import SwiftUI
 
 struct OnboardingFlowContainer: View {
     @AppStorage("onboardingProgress") private var persistentProgress: OnboardingProgress = .welcome
     @AppStorage("hasShownOnboarding") private var hasShownOnboarding: Bool = false
-    
-    // In-memory state used for manual re-runs
+
     @State private var sessionProgress: OnboardingProgress = .welcome
 
     var body: some View {
@@ -19,32 +17,62 @@ struct OnboardingFlowContainer: View {
             switch sessionProgress {
             case .welcome:
                 WelcomeView(progress: $sessionProgress)
+                    .id(OnboardingProgress.welcome)
+                    .transition(.asymmetric(
+                        insertion: .move(edge: .leading).combined(with: .opacity),
+                        removal: .move(edge: .leading).combined(with: .opacity)
+                    ))
             case .dextDriver:
                 DextDriverView(progress: $sessionProgress)
+                    .id(OnboardingProgress.dextDriver)
+                    .transition(.asymmetric(
+                        insertion: .move(edge: .trailing).combined(with: .opacity),
+                        removal: .move(edge: .leading).combined(with: .opacity)
+                    ))
             case .safariExtension:
                 SafariExtensionView(progress: $sessionProgress)
+                    .id(OnboardingProgress.safariExtension)
+                    .transition(.asymmetric(
+                        insertion: .move(edge: .trailing).combined(with: .opacity),
+                        removal: .move(edge: .leading).combined(with: .opacity)
+                    ))
             case .completed:
-                Color.clear.onAppear {
-                    // Reset session in case they open it yet again later
-                    sessionProgress = .welcome
-                }
+                Color.clear
+                    .onAppear {
+                        setSessionProgress(.welcome, animated: false)
+                    }
             }
         }
+        .animation(.easeInOut(duration: 0.35), value: sessionProgress)
         .frame(width: 540, height: 650)
+        .clipped()
         .onAppear {
-            // If they haven't finished onboarding before, sync with AppStorage.
-            // If they HAVE finished before, always start them at .welcome for this session.
             if !hasShownOnboarding {
-                sessionProgress = persistentProgress
+                setSessionProgress(persistentProgress, animated: false)
             } else {
-                sessionProgress = .welcome
+                setSessionProgress(.welcome, animated: false)
             }
         }
-        // Mirror changes back to AppStorage ONLY during the first-time onboarding
         .onChange(of: sessionProgress) { _, newValue in
             if !hasShownOnboarding {
                 persistentProgress = newValue
             }
         }
     }
+
+    private func setSessionProgress(_ newValue: OnboardingProgress, animated: Bool) {
+        if animated {
+            sessionProgress = newValue
+        } else {
+            var transaction = Transaction()
+            transaction.disablesAnimations = true
+            withTransaction(transaction) {
+                sessionProgress = newValue
+            }
+        }
+    }
+}
+
+#Preview {
+    OnboardingFlowContainer()
 }
