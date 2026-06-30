@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct WelcomeView: View {
+    @Binding var progress: OnboardingProgress
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -27,8 +29,8 @@ struct WelcomeView: View {
                     Text("Unscroll er en tidsmaskine til dit udklipsholder, som lader dig finde alt, hvad du nogensinde har kopieret, og bruge det når som helst, når du har brug for det igen.")
                 }
                 
-                NavigationLink {
-                    DextDriverView()
+                Button {
+                    progress = .dextDriver
                 } label: {
                     Text("Kom godt i gang")
                         .foregroundColor(.white)
@@ -49,5 +51,5 @@ struct WelcomeView: View {
 }
 
 #Preview {
-    WelcomeView()
+    WelcomeView(progress: .constant(.welcome))
 }

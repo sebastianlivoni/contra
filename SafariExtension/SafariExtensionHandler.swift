@@ -9,6 +9,17 @@ import SafariServices
 import os.log
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
+    
+    override init() {
+        super.init()
+        
+        DistributedNotificationCenter.default().postNotificationName(
+            Notification.Name("me.livoni.unscroll.extensionEnabled"),
+            object: nil,
+            userInfo: nil,
+            deliverImmediately: true
+        )
+    }
 
     override func beginRequest(with context: NSExtensionContext) {
         let request = context.inputItems.first as? NSExtensionItem

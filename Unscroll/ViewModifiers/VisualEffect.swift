@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct VisualEffectView: NSViewRepresentable {
+fileprivate struct VisualEffectView: NSViewRepresentable {
     func makeNSView(context: Context) -> NSGlassEffectView {
         let effectView = NSGlassEffectView()
         effectView.style = .regular
@@ -18,7 +18,7 @@ struct VisualEffectView: NSViewRepresentable {
     }
 }
 
-struct VisualEffectModifier: ViewModifier {
+fileprivate struct VisualEffectModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .background(VisualEffectView().ignoresSafeArea())

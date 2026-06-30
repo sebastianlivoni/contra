@@ -5,3 +5,5 @@ document.addEventListener('mouseup', (e) => {
         history.forward();
     }
 });
+
+safari.extension.dispatchMessage("InterestingMessage",  { "key": "value" });

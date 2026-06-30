@@ -20,6 +20,11 @@ enum DextStatus: Equatable {
     case requiresReboot
 }
 
+enum SafariExtensionStatus: Equatable {
+    case enabled
+    case disabled
+}
+
 enum DiagnosticState<T: Equatable>: Equatable {
     case unknown
     case fetching
@@ -30,7 +35,7 @@ enum DiagnosticState<T: Equatable>: Equatable {
 @MainActor
 final class DiagnosticsManager: NSObject, OSSystemExtensionRequestDelegate, OSSystemExtensionsWorkspaceObserver {
     var naturalScrollingState: DiagnosticState<Bool> = .unknown
-    var safariExtensionState: DiagnosticState<Bool> = .unknown
+    var safariExtensionState: DiagnosticState<SafariExtensionStatus> = .unknown
     var dextState: DiagnosticState<DextStatus> = .unknown
     
     private var cancellables = Set<AnyCancellable>()
@@ -83,7 +88,7 @@ final class DiagnosticsManager: NSObject, OSSystemExtensionRequestDelegate, OSSy
     func checkSafariExtensionStatus() async {
         do {
             let result = try await SFSafariExtensionManager.stateOfSafariExtension(withIdentifier: safariExtensionIdentifier)
-            self.safariExtensionState = .success(result.isEnabled)
+            self.safariExtensionState = .success(result.isEnabled ? .enabled : .disabled)
         } catch {
             logger.error("Failed to check safari extension status: \(error.localizedDescription)")
             self.safariExtensionState = .unknown

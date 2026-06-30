@@ -14,7 +14,7 @@ struct DiagnosticsSettingsView: View {
         Form {
             Section(header: Text("Safari Web Extension")) {
                 HStack {
-                    StatusIndicator(state: diagnosticsManager.safariExtensionState)
+                    /*StatusIndicator(state: diagnosticsManager.safariExtensionState)
                     
                     switch diagnosticsManager.safariExtensionState {
                     case .unknown:
@@ -27,7 +27,7 @@ struct DiagnosticsSettingsView: View {
                         Text(isEnabled ? "Safari Web Extension is enabled" : "Safari Web Extension is disabled")
                             .foregroundColor(.primary)
                     }
-                    Spacer()
+                    Spacer()*/
                 }
             }
             

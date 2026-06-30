@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WindowAccessor: NSViewRepresentable {
+fileprivate struct WindowAccessor: NSViewRepresentable {
     var onChange: (NSWindow?) -> Void
 
     func makeNSView(context: Context) -> NSView {
@@ -21,17 +21,17 @@ struct WindowAccessor: NSViewRepresentable {
     func updateNSView(_ nsView: NSView, context: Context) {}
 }
 
-extension View {
-    func movableByWindowBackground() -> some View {
-        self.modifier(MoveableWindowModifier())
-    }
-}
-
-struct MoveableWindowModifier: ViewModifier {
+fileprivate struct MoveableWindowModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .background(WindowAccessor { window in
                 window?.isMovableByWindowBackground = true
             })
+    }
+}
+
+extension View {
+    func movableByWindowBackground() -> some View {
+        self.modifier(MoveableWindowModifier())
     }
 }

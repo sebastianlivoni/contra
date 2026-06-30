@@ -1,38 +1,15 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "1. Open **System Settings**." : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1. Åbn **Systemindstillinger**."
-          }
-        }
-      }
-    },
-    "2. Navigate to **Privacy & Security**." : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "2. Gå til **Privatliv og sikkerhed**."
-          }
-        }
-      }
-    },
-    "3. Scroll down and click **Allow** next to UnscrollDriver." : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "3. Rul ned, og klik på **Tillad** ud for UnscrollDriver."
-          }
-        }
-      }
-    },
     "About" : {
-
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Om"
+          }
+        }
+      }
     },
     "About Unscroll" : {
       "localizations" : {
@@ -44,19 +21,6 @@
         }
       }
     },
-    "Action Required" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Handling påkrævet"
-          }
-        }
-      }
-    },
-    "Aktivér nu" : {
-
-    },
     "Aktivér Safari web-udvidelsen" : {
 
     },
@@ -65,27 +29,6 @@
     },
     "Aktivér systemudvidelsen" : {
 
-    },
-    "Checking driver status..." : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kontrollerer driverstatus..."
-          }
-        }
-      }
-    },
-    "Checking scroll system extension status" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tjekker status for systemudvidelse til rulning"
-          }
-        }
-      }
     },
     "Checking scroll system settings status" : {
       "localizations" : {
@@ -97,32 +40,12 @@
         }
       }
     },
-    "Checking web extension status" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tjekker status for webudvidelsen"
-          }
-        }
-      }
-    },
     "Diagnostics" : {
       "localizations" : {
         "da" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Diagnostik"
-          }
-        }
-      }
-    },
-    "Driver fully active!" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Driver er fuldt aktiv!"
           }
         }
       }
@@ -139,16 +62,6 @@
     },
     "En bedre måde at kopiere og indsætte" : {
 
-    },
-    "Enable Unscroll Driver" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aktiver Unscroll Driver"
-          }
-        }
-      }
     },
     "Enable Unscroll Mouse Driver" : {
       "localizations" : {
@@ -170,9 +83,6 @@
         }
       }
     },
-    "Får din eksterne mus til at rulle som på Windows." : {
-
-    },
     "Font Size (%.0f pts)" : {
       "localizations" : {
         "da" : {
@@ -187,9 +97,6 @@
 
     },
     "Fortsæt alligevel" : {
-
-    },
-    "Gå frem og tilbage" : {
 
     },
     "General" : {
@@ -212,6 +119,9 @@
         }
       }
     },
+    "Hello World!" : {
+
+    },
     "Hello, World!" : {
 
     },
@@ -221,16 +131,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uafhængigt af dine MacBook-pegefeltindstillinger."
-          }
-        }
-      }
-    },
-    "Install Driver" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Installer driver"
           }
         }
       }
@@ -257,9 +157,6 @@
     "Nødvendig for bruge sideknapperne på din mus i Safari" : {
 
     },
-    "Onboarding" : {
-
-    },
     "Safari Web Extension" : {
       "localizations" : {
         "da" : {
@@ -269,29 +166,6 @@
           }
         }
       }
-    },
-    "Safari Web Extension is disabled" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Webudvidelse til Safari er deaktiveret"
-          }
-        }
-      }
-    },
-    "Safari Web Extension is enabled" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Webudvidelse til Safari er aktiveret"
-          }
-        }
-      }
-    },
-    "Safari web-udvidelsen er ikke aktiv" : {
-
     },
     "Scroll Direction:" : {
       "localizations" : {
@@ -333,28 +207,6 @@
         }
       }
     },
-    "System extension is disabled" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Systemudvidelse er deaktiveret"
-          }
-        }
-      }
-    },
-    "System extension is enabled" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Systemudvidelse er aktiveret"
-          }
-        }
-      }
-    },
     "System Information" : {
       "localizations" : {
         "da" : {
@@ -364,9 +216,6 @@
           }
         }
       }
-    },
-    "Systemudvidelsen er ikke aktiv" : {
-
     },
     "Third-party licenses" : {
       "localizations" : {
@@ -411,25 +260,6 @@
     "Unscroll er en tidsmaskine til dit udklipsholder, som lader dig finde alt, hvad du nogensinde har kopieret, og bruge det når som helst, når du har brug for det igen." : {
 
     },
-    "Unscroll requires a system driver extension to hook up your mouse features." : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unscroll kræver en systemdriverudvidelse for at tilslutte dine musefunktioner."
-          }
-        }
-      }
-    },
-    "Unscroll virker ikke, før Safari webudvidelsen er aktiveret. Aktivér den nu for at fortsætte." : {
-
-    },
-    "Unscroll virker ikke, før systemudvidelsen er aktiveret. Aktivér den nu for at fortsætte." : {
-
-    },
-    "Vend musehjulets retning" : {
-
-    },
     "Version %@ (%@)" : {
       "localizations" : {
         "da" : {
@@ -446,25 +276,12 @@
         }
       }
     },
-    "Vis forrige eller næste side i Safari med sideknapperne på din mus." : {
-
-    },
-    "Waiting for approval..." : {
+    "Welcome to Unscroll" : {
       "localizations" : {
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Venter på godkendelse..."
-          }
-        }
-      }
-    },
-    "Your mouse wheel will now scroll as expected" : {
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dit musehjul vil nu scrolle som forventet"
+            "value" : "Velkommen til Unscroll"
           }
         }
       }

@@ -11,7 +11,7 @@ struct SafariExtensionToggle: View {
     @Environment(DiagnosticsManager.self) private var diagnosticsManager
     
     var body: some View {
-        Toggle("Aktivér Safari web-udvidelsen", isOn: Binding(get: { diagnosticsManager.safariExtensionState == .success(true) }, set: { newValue in
+        Toggle("Aktivér Safari web-udvidelsen", isOn: Binding(get: { diagnosticsManager.safariExtensionState == .success(.enabled) }, set: { newValue in
             diagnosticsManager.openSafariExtensionSettings()
         }))
     }

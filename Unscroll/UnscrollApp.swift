@@ -7,50 +7,100 @@
 
 import SwiftUI
 
+import SwiftUI
+
 @main
 struct UnscrollApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @State private var diagnosticsManager = DiagnosticsManager()
     
-    @State var diagnosticsManager = DiagnosticsManager()
+    @Environment(\.openWindow) var openWindow
+    @Environment(\.dismissWindow) var dismissWindow
     
-    @Environment(\.dismiss) private var dismiss
+    @AppStorage("hasShownOnboarding") private var hasShownOnboarding: Bool = false
     
     var body: some Scene {
-        Window("Unscroll", id: "unscroll") {
-            //ContentView()
+        Window(.main) {
             Text("Hello, World!")
                 .frame(width: 350, height: 460)
                 .environment(diagnosticsManager)
-            
         }
         .windowResizability(.contentSize)
         .windowStyle(.hiddenTitleBar)
-        .commands {
-            UnscrollCommands()
-        }
+        .commands { UnscrollCommands() }
+        .defaultLaunchBehavior(hasShownOnboarding ? .presented : .suppressed)
         
-        Window("Onboarding", id: "onboarding") {
-            WelcomeView()
+        Window( .onboarding) {
+            OnboardingFlowContainer()
                 .environment(diagnosticsManager)
                 .applyVisualEffect()
-                .windowMinimizeBehavior(.disabled)
-                .windowDismissBehavior(.disabled)
-                .windowResizeBehavior(.disabled)
-                .movableByWindowBackground()
+                .stripTrafficLights()
+                .gesture(WindowDragGesture()) // Lets users drag anywhere to move the window
+                .centerWindow(.onboarding)
         }
         .windowResizability(.contentSize)
         .windowStyle(.hiddenTitleBar)
+        .defaultLaunchBehavior(!hasShownOnboarding ? .presented : .suppressed)
         
-        Window("About", id: "about") {
+        Window(.about) {
             AboutView()
                 .applyVisualEffect()
         }
         .windowResizability(.contentSize)
         .windowStyle(.hiddenTitleBar)
+        .defaultLaunchBehavior(.suppressed)
         
         Settings {
-            SettingsView()
-                .environment(diagnosticsManager)
+            SettingsView().environment(diagnosticsManager)
+        }
+    }
+}
+
+enum AppWindow: String {
+    case main
+    case onboarding
+    case about
+
+    var title: LocalizedStringResource {
+        switch self {
+        case .main:
+            "Unscroll"
+        case .onboarding:
+            "Welcome to Unscroll"
+        case .about:
+            "About"
+        }
+    }
+
+    var id: String { rawValue }
+}
+
+extension Window where Content: View {
+    init(_ appWindow: AppWindow, @ViewBuilder content: () -> Content) {
+        self.init(appWindow.title, id: appWindow.id, content: content)
+    }
+}
+
+extension View {
+    func stripTrafficLights() -> some View {
+        self.onAppear {
+            if let window = NSApplication.shared.windows.first(where: { $0.identifier?.rawValue == "onboarding" }) {
+                window.standardWindowButton(.closeButton)?.isHidden = true
+                window.standardWindowButton(.miniaturizeButton)?.isHidden = true
+                window.standardWindowButton(.zoomButton)?.isHidden = true
+                window.collectionBehavior = [.fullScreenNone]
+                window.styleMask.remove(.resizable)
+            }
+        }
+    }
+    
+    func centerWindow(_ appWindow: AppWindow) -> some View {
+        self.onAppear {
+            guard let window = NSApplication.shared.windows.first(where: {
+                $0.identifier?.rawValue == appWindow.id
+            }) else { return }
+
+            window.center()
         }
     }
 }

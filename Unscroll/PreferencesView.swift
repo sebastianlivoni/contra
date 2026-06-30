@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PreferencesView: View {
     // Existing system tracking
-    @State private var naturalScrollingStatus: String = ScrollPreferences.scrollingDirectionString
+    //@State private var naturalScrollingStatus: String = ScrollPreferences.scrollingDirectionString
     
     // New states for driver control and external mouse preferences
     @State private var isDriverEnabled: Bool = true
@@ -58,16 +58,16 @@ struct PreferencesView: View {
             Section(header: Text("System Information")) {
                 HStack {
                     Text("Global System Scroll Direction:")
-                    Text(naturalScrollingStatus)
+                    /*Text(naturalScrollingStatus)
                         .fontWeight(.bold)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondary)*/
                 }
             }
         }
         .padding()
         .frame(width: 450, height: 250) // Expanded size to fit new controls comfortably
-        .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
+        /*.onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
             naturalScrollingStatus = ScrollPreferences.scrollingDirectionString
-        }
+        }*/
     }
 }
