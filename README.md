@@ -10,8 +10,8 @@ Contra ships a **DriverKit HID extension (DEXT)** that matches external pointing
 
 - It works system-wide, in every app, without per-app configuration.
 - It doesn't require kernel extensions (KEXTs), which Apple has deprecated in favor of DriverKit/System Extensions.
-- Your trackpad and Magic Mouse/Trackpad continue to use macOS's native "natural scrolling" setting untouched.
-- No event-tap injection or Accessibility-permission hacks — this is a real driver, not a userspace workaround.
+- Trackpad and Magic Mouse continue to use macOS's native "natural scrolling" setting untouched.
+- No event-tap injection or Accessibility-permission hacks - this is a real driver, not a userspace workaround.
 
 ## Requirements
 
