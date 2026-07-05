@@ -1,0 +1,284 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "About" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Om"
+          }
+        }
+      }
+    },
+    "About Contra" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Om Contra"
+          }
+        }
+      }
+    },
+    "Aktivér Safari web-udvidelsen" : {
+
+    },
+    "Aktivér Safari webudvidelsen" : {
+
+    },
+    "Aktivér systemudvidelsen" : {
+
+    },
+    "Checking scroll system settings status" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tjekker status for systemindstillinger til rulning"
+          }
+        }
+      }
+    },
+    "Contra" : {
+
+    },
+    "Contra er en tidsmaskine til dit udklipsholder, som lader dig finde alt, hvad du nogensinde har kopieret, og bruge det når som helst, når du har brug for det igen." : {
+
+    },
+    "Diagnostics" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diagnostik"
+          }
+        }
+      }
+    },
+    "Driver Status" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Driver Status"
+          }
+        }
+      }
+    },
+    "En bedre måde at kopiere og indsætte" : {
+
+    },
+    "Enable Contra Mouse Driver" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktivér Contra musedriver"
+          }
+        }
+      }
+    },
+    "External Mouse Settings" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indstillinger for ekstern mus"
+          }
+        }
+      }
+    },
+    "Font Size (%.0f pts)" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skriftstørrelse (%.0f pkt.)"
+          }
+        }
+      }
+    },
+    "Fortsæt" : {
+
+    },
+    "Fortsæt alligevel" : {
+
+    },
+    "General" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Generelt"
+          }
+        }
+      }
+    },
+    "Global System Scroll Direction:" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Globalt systems rulleretning:"
+          }
+        }
+      }
+    },
+    "Hello World!" : {
+
+    },
+    "Hello, World!" : {
+
+    },
+    "Independent of your MacBook trackpad settings." : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uafhængigt af dine MacBook-pegefeltindstillinger."
+          }
+        }
+      }
+    },
+    "Jeg gør det senere" : {
+
+    },
+    "Kom godt i gang" : {
+
+    },
+    "Natural scrolling" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naturlig rulning"
+          }
+        }
+      }
+    },
+    "Nødvendig for at vende rulleretningen" : {
+
+    },
+    "Nødvendig for bruge sideknapperne på din mus i Safari" : {
+
+    },
+    "Safari Web Extension" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Webudvidelse til Safari"
+          }
+        }
+      }
+    },
+    "Scroll Direction:" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rulleretning:"
+          }
+        }
+      }
+    },
+    "Scroll System Extension" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systemudvidelse til rulning"
+          }
+        }
+      }
+    },
+    "Scroll System Settings" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systemindstillinger til rulning"
+          }
+        }
+      }
+    },
+    "Show Previews" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vis forhåndsvisninger"
+          }
+        }
+      }
+    },
+    "System Information" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systemoplysninger"
+          }
+        }
+      }
+    },
+    "Third-party licenses" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tredjepartslicenser"
+          }
+        }
+      }
+    },
+    "Traditional scrolling" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traditionel rulning"
+          }
+        }
+      }
+    },
+    "Unknown status" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ukendt status"
+          }
+        }
+      }
+    },
+    "Version %@ (%@)" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %1$@ (%2$@)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Version %1$@ (%2$@)"
+          }
+        }
+      }
+    },
+    "Welcome to Contra" : {
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Velkommen til Contra"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.2"
+}

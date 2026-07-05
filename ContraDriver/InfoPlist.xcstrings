@@ -1,0 +1,50 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "CFBundleDisplayName" : {
+      "comment" : "Bundle display name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "ContraDriver"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "me.livoni.Contra.ContraDriver"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "OSBundleUsageDescription" : {
+      "comment" : "Privacy - Driver Extension Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Få traditionel scrolleretning for eksterne mus på macOS, mens Magic Mouse og trackpad forbliver uændrede."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Get traditional scroll direction for external mice on macOS, while Magic Mouse and trackpad remain unchanged."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.2"
+}
